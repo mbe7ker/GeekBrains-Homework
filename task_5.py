@@ -1,10 +1,27 @@
-my_list = [9, 8, 7, 7, 7, 6, 5, 3, 3, 3, 2, 1]
-new_number = int(input("Введите новый элемент рейтинга в виде натурального числа: "))
-i = 0
-for n in my_list:
-    if new_number <= n:
-        i += 1
-my_list.insert(i, new_number)
-print(my_list)
+stop_symbol = "Q"
+add_numbers = input(f"Введите строку чисел, разделенных пробелом. После ввода {stop_symbol} программа прекращается. - ")
 
 
+def my_func(my_str):
+    result = 0
+    while True:
+        str_list = my_str.split()
+        if stop_symbol not in str_list:
+            numbers_list = []
+            for i in str_list:
+                numbers_list.append(int(i))
+            for n in numbers_list:
+                result += n
+            my_str = input(
+                f"Введите строку чисел, разделенных пробелом. После ввода {stop_symbol} программа прекращается. - ")
+        if stop_symbol in str_list:
+            str_list.remove("Q")
+            numbers_list = []
+            for i in str_list:
+                numbers_list.append(int(i))
+            for n in numbers_list:
+                result += n
+            return print(result)
+
+
+my_func(add_numbers)
